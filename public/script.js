@@ -6,7 +6,7 @@ var peer = new Peer(undefined, {
     port: "443",
 });
 
-const user = prompt("Enter your name");
+const user = prompt("ENTER YOUR NAME");
 
 $(function () {
     $("#show_chat").click(function () {
