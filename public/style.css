@@ -51,44 +51,36 @@
   flex-direction: column;
 }
 
+.username {
+  color: #2f80ec;
+}
+
 .message {
-  display: flex;
-  flex-direction: column;
-}
-
-.message > b {
-  color: #eeeeee;
-  display: flex;
-  align-items: center;
-  text-transform: capitalize;
-}
-
-.message > b > i {
-  margin-right: 0.7rem;
-  font-size: 1.5rem;
-}
-
-.message > span {
-  background-color: #eeeeee;
-  margin: 1rem 0;
-  padding: 1rem;
-  border-radius: 5px;
+  padding: 0.3em 1em;
+  color: white;
 }
 
 .main_message_container {
-  padding: 1rem;
+  padding-left: 1rem;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
 
 .main_message_container > input {
   height: 50px;
+  width: 100%;
   flex: 1;
   font-size: 1rem;
   border-radius: 5px;
   padding-left: 20px;
   border: none;
+}
+
+.room {
+  font-size: 2em;
+  background-color: #3a4961;
 }
 
 .header_back {
