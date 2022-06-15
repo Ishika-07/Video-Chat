@@ -95,13 +95,13 @@ $(function () {
         const enabled = myStream.getAudioTracks()[0].enabled;
         if(enabled){
             myStream.getAudioTracks()[0].enabled = false
-            e = `<i class = "fas fa-michrophone-slash"></i>`
+            e = `<i class = "fas fa-microphone-slash"></i>`
             $("#mute_button").toggleClass("background_red")
             $("#mute_button").html(e)
         }
         else{
             myStream.getVideoTracks()[0].enabled = true
-            e = `<i class = "fas fa-michrophone"></i>`
+            e = `<i class = "fas fa-microphone"></i>`
             $("#mute_button").toggleClass("background_red")
             $("#mute_button").html(e)
         }
