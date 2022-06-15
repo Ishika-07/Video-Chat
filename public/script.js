@@ -75,7 +75,40 @@ $(function () {
         }
     })
 
+    $("#stop_video").click(function(e){
+        const enabled = myStream.getVideoTracks()[0].enabled;
+        if(enabled){
+            myStream.getVideoTracks()[0].enabled = false
+            e = `<i class = "fas fa-video-slash"></i>`
+            $("#stop_video").toggleClass("background_red")
+            $("#stop_video").html(e)
+        }
+        else{
+            myStream.getVideoTracks()[0].enabled = true
+            e = `<i class = "fas fa-video"></i>`
+            $("#stop_video").toggleClass("background_red")
+            $("#stop_video").html(e)
+        }
+    })
+
+    $("#mute_button").click(function(e){
+        const enabled = myStream.getAudioTracks()[0].enabled;
+        if(enabled){
+            myStream.getAudioTracks()[0].enabled = false
+            e = `<i class = "fas fa-michrophone-slash"></i>`
+            $("#mute_button").toggleClass("background_red")
+            $("#mute_button").html(e)
+        }
+        else{
+            myStream.getVideoTracks()[0].enabled = true
+            e = `<i class = "fas fa-michrophone"></i>`
+            $("#mute_button").toggleClass("background_red")
+            $("#mute_button").html(e)
+        }
+    })
 })
+
+
 
 peer.on("open", (id) => {
     socket.emit("join-room", ROOM_ID, id, user);
