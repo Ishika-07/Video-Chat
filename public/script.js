@@ -107,9 +107,9 @@ $(function () {
         }
     })
 
-    $("#invite").click(function(e){
+    $("#invite").click(function(){
         const to = prompt("Enter the email address ");
-        var data = {url: window.location.href, to: to};
+        let data = {url: window.location.href, to: to};
 
         $.ajax({
             url: "/sendMail",
@@ -121,7 +121,7 @@ $(function () {
                 alert("Invite Sent!")
             },
             error: function(e){
-                console.log(e.error)
+                console.log("Error")
             }
         })
     })
