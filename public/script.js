@@ -110,9 +110,10 @@ $(function () {
     $("#invite").click(function(){
         const to = prompt("Enter the email address ");
         let data = {url: window.location.href, to: to};
-
+        console.log(data);
+        
         $.ajax({
-            url: "/sendMail",
+            url: "/send-mail",
             type: "post",
             data: JSON.stringify(data),
             dataType: "json",
