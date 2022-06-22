@@ -121,7 +121,7 @@ $(function () {
                 alert("Invite Sent!")
             },
             error: function(e){
-                console.log("Error")
+                console.log(e.responseJSON)
             }
         })
     })
