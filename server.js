@@ -3,6 +3,7 @@ const app = express();
 const server = require("http").Server(app);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.json())
 
 const { v4: uuidv4 } = require("uuid");
 
@@ -19,14 +20,17 @@ const peerServer = ExpressPeerServer(server, {
 
 app.use("/peerjs", peerServer);
 
-const nodeMailer = require("nodemailer");
-const transporter = nodeMailer.createTransport({
-    port:465,
-    host:"smtp.gmail.com",
-    auth:{user:"ishikarahul07@gmail.com",
-          pass: "dwkjslsgtcrlhvnv"},
-    secure:true
-})
+var nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    port: 465,
+    host: "smtp.gmail.com",
+    auth: {
+        user: '',
+        pass: '',
+    },
+    secure: true,
+});
 
 app.get("/", (req, res) => {
     res.redirect(`/${uuidv4()}`);
@@ -36,22 +40,21 @@ app.get("/:room", (req, res) => {
     res.render("index", { roomId: req.params.room });
 });
 
-app.post("/send-mail",(req, res)=>{
-    const to = req.body.to
-    const url = req.body.url
+app.post("/send-mail", (req, res) => {
+    const to = req.body.to;
+    const url = req.body.url;
     const mailData = {
-        from: "ishikarahul07@gmail.com",
+        from: "apoorv.goyal@whitehatjr.com",
         to: to,
-        subject: "Please join the Video Chat using the below Link",
-        html: `<p> Hi! Come and join for a video chat here - ${url} </p>`
-    }
-    transporter.sendMail(mailData, (error, info)=>{
-        if(error){
+        subject: "Join the video chat with me!",
+        html: `<p>Hey there,</p><p>Come and join me for a video chat here - ${url}</p>`
+    };
+    transporter.sendMail(mailData, (error, info) => {
+        if (error) {
             return console.log(error);
         }
-        
-        res.status(200).send({message: "Invite Sent!!", message_id: info.messageId});
-    })
+        res.status(200).send({ message: "Invitation sent!", message_id: info.messageId });
+    });
 })
 
 io.on("connection", (socket) => {
