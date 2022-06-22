@@ -106,6 +106,25 @@ $(function () {
             $("#mute_button").html(e)
         }
     })
+
+    $("#invite").click(function(e){
+        const to = prompt("Enter the email address ");
+        var data = {url: window.location.href, to: to};
+
+        $.ajax({
+            url: "/sendMail",
+            type: "post",
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType: "application/json",
+            success: function(){
+                alert("Invite Sent!")
+            },
+            error: function(e){
+                console.log(e.error)
+            }
+        })
+    })
 })
 
 
